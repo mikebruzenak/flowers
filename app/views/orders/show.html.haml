@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Customer name:
+  = @order.customer_name
+%p
+  %b Email:
+  = @order.email
+%p
+  %b Delivery method:
+  = @order.delivery_method
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path
