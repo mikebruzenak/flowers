@@ -13,7 +13,15 @@
     = f.label :email
     = f.text_field :email
   .field
-    = f.label :delivery_method
-    = f.number_field :delivery_method
+    = f.label :phone_number
+    = f.text_field :phone_number
+  .field
+    = f.label "Delivery method"
+    %br
+    = f.label "delivery"
+    = f.radio_button :delivery_method, 'deliver', checked: true
+    %br
+    = f.label "in-store pickup"
+    = f.radio_button :delivery_method, 'pickup'
   .actions
     = f.submit 'Save'
