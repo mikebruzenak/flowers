@@ -18,6 +18,10 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    if !current_user.admin?
+      flash.alert = 'Employess cannot edit orders.'
+      redirect_to @order
+    end
   end
 
   # POST /orders
