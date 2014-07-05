@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     if !current_user.admin?
-      flash.alert = 'Employess cannot edit orders.'
+      flash.alert = 'Employees cannot edit orders.'
       redirect_to @order
     end
   end
@@ -47,8 +47,13 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1
   def destroy
-    @order.destroy
-    redirect_to orders_url, notice: 'Order was successfully destroyed.'
+    if !current_user.admin?
+      flash.alert = 'Employees cannot delete orders.'
+      redirect_to @order
+    else
+      @order.destroy
+      redirect_to orders_url, notice: 'Order was successfully destroyed.'
+    end
   end
 
   private
